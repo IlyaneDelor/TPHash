@@ -17,7 +17,7 @@ npm install crypto-js
 ```sh
 npm install javascript-blowfish
 ```
-Download Jsencryp.js and jsencypt.min.js on my Github
+Download Jsencryp.js and jsencypt.min.js on my Github too and add them to your Js folder.
 
 ## Usage example
 
