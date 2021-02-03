@@ -33,14 +33,38 @@ For AES,RSA, and BlowFish don't forget to put your key or keys.
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
-## Development setup
+## Development setup for RSA
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
+=======================
+This library should work hand-in-hand with openssl.  With that said, here is how to use this library.
 
-```sh
-make install
-npm test
+ - Within your terminal type the following.
+
 ```
+openssl genrsa -out rsa_1024_priv.pem 1024
+```
+
+ - This generates a private key, which you can see by doing the following...
+
+```
+cat rsa_1024_priv.pem
+```
+
+ - You can then copy and paste this in the Private Key section of within index.html.
+ - Next, you can then get the public key by executing the following command.
+
+```
+openssl rsa -pubout -in rsa_1024_priv.pem -out rsa_1024_pub.pem
+```
+
+ - You can see the public key by typing...
+
+```
+cat rsa_1024_pub.pem
+```
+
+ - Now copy and paste this in the Public key within the RSA.html.
+ - Now you can then convert to and from encrypted text by doing the following in code.
 
 ## Release History
 
