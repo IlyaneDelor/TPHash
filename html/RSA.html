@@ -65,7 +65,18 @@
 
   
     <h1 class="text-center text-uppercase m-4">RSA : Script Hashage <small class="text-muted"> TP</small></h1>
+    <body onload="init()">
+       <div class="form-group row">
+     <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="fileInput" type="file" name="file" value="Upload" >
+   </div>
+         <h4 class="text-center text-uppercase m-4"><small class="text-muted">Reload Pour Upload un file et cliquez sur déchiffrement ou Chiffrement </small></h1>
+   </body>
+<body>
  <form>
+
+ 
+
+
   <div class="form-group row">
      <label for="colFormLabel" class="col-sm-2 col-form-label">  Public Key</label>
     <div class="col-sm-10">
@@ -87,22 +98,23 @@
   </div>
 
  <div class="form-group row">
-    <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="encrypt" type="button" name="encrypt" value="Chiffrement / Dechiffrement  RSA">
+    <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="encrypt" type="button" name="encrypt" value="Chiffrement  RSA">
    
     <textarea name="result" id="encrypted" class="form-control" rows="12" cols="70"></textarea>
   </div>
    <div class="form-group row">
   <input type="button" onclick="strDownload(encrypted.value, 'result.txt');" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
- class="btn btn-primary" value="DOWNLOAD RESULT"><a>
+ class="btn btn-primary" value="DOWNLOAD RESULT">
 </div>
    <div class="form-group row">
-    <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="decrypt" type="button" name="encrypt" value="Chiffrement / Dechiffrement  RSA">
+    <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="decrypt" type="button" name="encrypt" value="Dechiffrement  RSA">
    
     <textarea name="result" id="decrypted" class="form-control" rows="12" cols="70"></textarea>
   </div>
-
-
-
+<div class="form-group row">
+ <input type="button" onclick="strDownload(decrypted.value, 'result.txt');" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
+ class="btn btn-primary" value="DOWNLOAD RESULT">
+</div>
 
   </form>
   <script type="text/javascript">
@@ -132,34 +144,56 @@ for (var i = 0; i < parts.length ; i++) {
 document.querySelector("#encrypted").value = result;
 
 
-
+});
 
 
 document.querySelector("#decrypt").addEventListener("click", function() {
   const decrypt = new JSEncrypt();
   
   decrypt.setPrivateKey(document.querySelector("#privkey").value);
+  var yes = encrypted.value;
+  if (encrypted.value == "") {
+    var yes = input.value;
 
-  var str2 = result.split("=");
+  }
+  var str2 = yes.split("=");
   var text =""
   console.log(str2);
-  for (var i = 0; i < parts.length ; i++) {
+  for (var i = 0; i < str2.length -1; i++) {
       var test2 = str2[i];
 
       text = text + decrypt.decrypt(test2);
 
     };
   document.querySelector("#decrypted").value = text;
-});
-
-
-
-
-
-
-
 
 });
+
+
+
+
+
+
+
+
+
+
+
+function init(){
+  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+}
+
+function handleFileSelect(event){
+  const reader = new FileReader()
+  reader.onload = handleFileLoad;
+  reader.readAsText(event.target.files[0])
+}
+
+function handleFileLoad(event){
+  console.log(event);
+  document.getElementById('input').textContent = event.target.result;
+}
+
 
 
 

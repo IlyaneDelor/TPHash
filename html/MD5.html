@@ -51,6 +51,30 @@
 </header>
     <h1 class="text-center text-uppercase m-4">MD5 : Script Hashage <small class="text-muted"> TP</small></h1>
 
+     <h4 class="text-center text-uppercase m-4"><small class="text-muted"> CHECKSUM 1 </small></h4>
+
+      <body onload="init1();init2();">
+
+       <div class="form-group row">
+
+
+     <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="fileInput1" type="file" name="file1" value="Upload Checksum1" >
+   </div>
+
+ </body>
+
+  <h4 class="text-center text-uppercase m-4"><small class="text-muted"> CHECKSUM 2 </small></h4>
+
+
+       <div class="form-group row">
+
+     <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="fileInput2" type="file" name="file2" value="Upload Checksum2" >
+   </div>
+
+         <h4 class="text-center text-uppercase m-4"><small class="text-muted">Reload Pour Upload un file et cliquez sur déchiffrement ou Chiffrement </small></h4>
+
+
+  
 <form>
 
   <div class="form-group row">
@@ -69,6 +93,8 @@
       <input type="text" name="hash" class="form-control" id="Output" placeholder="Output">
     </div>
   </div>
+  
+
 
 
 
@@ -79,13 +105,37 @@
   </div>
    <div class="form-group row">
   <input type="button" onclick="strDownload(Output.value, 'result.txt');" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
- class="btn btn-primary" value="DOWNLOAD RESULT"><a>
+ class="btn btn-primary" value="DOWNLOAD RESULT">
 </div>
+
+  <div class="form-group row">
+  
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Checksum 1</label>
+    <div class="col-sm-10">
+      <textarea type="text" name="Checksum1" class="form-control" id="Checksum1" placeholder="Checksum 1 Fichier Upload"></textarea>
+    </div>
+  </div>
+     <div class="form-group row">
+  
+    <label for="colFormLabel" class="col-sm-2 col-form-label">Checksum 2</label>
+    <div class="col-sm-10">
+      <textarea type="text" name="Checksum2" class="form-control" id="Checksum2" placeholder="Checksum 2 Fichier Upload"></textarea>
+    </div>
+  </div>
+
+  <div class="form-group row">
+  
+  <input type="button" onclick="compare()" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
+ class="btn btn-primary" value="COMPARE">
+
+</div>
+ <textarea type="text" name="Reponse" class="form-control" id="Reponse" placeholder="Reponse"></textarea>
 
 </form>
 
 
 <script type="text/javascript">
+
   
    function strDownload(a, b) {
   a = '' + a;
@@ -98,6 +148,61 @@
   c.click();
   d.removeChild(c);
 }
+
+
+function init1(){
+ 
+  document.getElementById('fileInput1').addEventListener('change', handleFileSelect1, false);
+}
+
+function init2(){
+  console.log("test");
+  document.getElementById('fileInput2').addEventListener('change', handleFileSelect2, false);
+}
+
+
+function handleFileSelect1(event){
+  console.log("yes");
+  const reader = new FileReader()
+  reader.onload = handleFileLoad1;
+  reader.readAsText(event.target.files[0])
+}
+
+function handleFileSelect2(event){
+  const reader2 = new FileReader()
+  reader2.onload = handleFileLoad2;
+  reader2.readAsText(event.target.files[0])
+}
+
+
+
+
+function handleFileLoad1(event){
+  console.log(event);
+  
+  document.getElementById('Checksum1').textContent = event.target.result;
+
+}
+
+
+function handleFileLoad2(event){
+  console.log(event);
+
+  document.getElementById('Checksum2').textContent = event.target.result;
+}
+
+
+function compare(){
+    if ((Checksum1.value.localeCompare(Checksum2.value)) == 0 ) {
+      var Repons = "Les deux Checksums sont identiques !";
+
+    }else{
+      var Repons = "Les deux Checksums sont différents !";
+    }
+    document.getElementById('Reponse').textContent = Repons;
+
+  }
+
 </script>
 </body>
 </html>
