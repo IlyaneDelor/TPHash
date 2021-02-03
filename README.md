@@ -25,7 +25,11 @@ Download Jsencryp.js and jsencypt.min.js on my Github too and add them to your J
 
 ## Usage example
 
-A few motivating and useful examples of how your product can be used. Spice this up with code blocks and potentially more screenshots.
+Follow instruction on Web Pages to encrypt and decrypt your message.
+
+Put your message in the correct input and click the button.
+
+For AES,RSA, and BlowFish don't forget to put your key or keys.
 
 _For more examples and usage, please refer to the [Wiki][wiki]._
 
