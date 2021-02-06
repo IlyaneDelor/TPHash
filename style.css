@@ -1,0 +1,27 @@
+
+/*TABLE*/
+
+table{
+    font-size: 20px;
+    color: #FFF;
+    border: 20px solid #F26522;
+    box-shadow: 0px 0px 3px #000;
+    background: #EF4D02;
+    border-collapse: collapse;
+}
+
+td:first-of-type{
+    cursor: pointer;
+}
+
+td,th{
+    padding: 5px 10px;
+    font-weight: normal;
+    width: 200px;
+    text-align: center;
+    border-right: 3px solid #F26522;
+}
+
+tr:nth-of-type(odd) td{
+    background: #ED6125;
+}

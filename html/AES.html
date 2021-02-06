@@ -1,157 +1,157 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-   
-       <script type="text/javascript" src="crypto-js/crypto-js.js"></script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  
+  <script type="text/javascript" src="crypto-js/crypto-js.js"></script>
 
 
-    <title>TPHash</title>
-  </head>
+  <title>TPHash</title>
+</head>
 
- <body>
+<body>
 
-<header style ="padding-bottom: 2%;">
+  <header style ="padding-bottom: 2%;">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Home</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" href="MD5.html">MD5</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="SHA-256.html">SHA-256</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="SHA3-512.html">SHA3-512</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link disabled" href="Keccak-512.html">Keccak-512</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link disabled" href="RipeMD160.html">RipeMD160</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link disabled" href="AES.html">AES</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link disabled" href="RSA.html">RSA</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="BlowFish.html">BlowFish
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-</header>
-    <h1 class="text-center text-uppercase m-4">AES : Script Hashage <small class="text-muted"> TP</small></h1>
-      <body onload="init()">
-       <div class="form-group row">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Home</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="MD5.html">MD5</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="SHA-256.html">SHA-256</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="SHA3-512.html">SHA3-512</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="Keccak-512.html">Keccak-512</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="RipeMD160.html">RipeMD160</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="AES.html">AES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="RSA.html">RSA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="BlowFish.html">BlowFish
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <h1 class="text-center text-uppercase m-4">AES : Script Hashage <small class="text-muted"> TP</small></h1>
+  <body onload="init()">
+   <div class="form-group row">
      <input style="margin:auto; margin-top: 2%; margin-bottom: 2%; " class="btn btn-primary"  id="fileInput" type="file" name="file" value="Upload" >
    </div>
-         <h4 class="text-center text-uppercase m-4"><small class="text-muted">Reload Pour Upload un file et cliquez sur déchiffrement ou Chiffrement </small></h1>
+   <h4 class="text-center text-uppercase m-4"><small class="text-muted">Reload Pour Upload un file et cliquez sur déchiffrement ou Chiffrement </small></h1>
    </body>
 
-<form>
+   <form>
 
-  <div class="form-group row">
-    <label for="colFormLabel" class="col-sm-2 col-form-label">  Input</label>
-    <div class="col-sm-10">
-      <textarea type="text" class="form-control" name ="input" id="input" placeholder="Input" ></textarea>
-    </div>
-  </div>
     <div class="form-group row">
-    <label for="colFormLabel" class="col-sm-2 col-form-label">  secret</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="secret" placeholder="SECRET" >
+      <label for="colFormLabel" class="col-sm-2 col-form-label">  Input</label>
+      <div class="col-sm-10">
+        <textarea type="text" class="form-control" name ="input" id="input" placeholder="Input" ></textarea>
+      </div>
     </div>
-  </div>
     <div class="form-group row">
-    <input type="button" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" onclick="hash.value =CryptoJS.AES.encrypt(input.value,secret.value);
-" class="btn btn-primary" value="Chiffrement AES">
-  <input type="button" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
-" id="decrypt" class="btn btn-primary" onclick="myFunction()" value="DeChiffrement AES">
-  </div>
-  <div class="form-group row">
-  
-    <label for="colFormLabel" class="col-sm-2 col-form-label">Output</label>
-    <div class="col-sm-10">
-      <input type="text" name="hash" class="form-control" id="Output" placeholder="Output">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">  secret</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="secret" placeholder="SECRET" >
+      </div>
     </div>
-  </div>
- <div class="form-group row">
-  <input type="button" onclick="strDownload(Output.value, 'result.txt');" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
- class="btn btn-primary" value="DOWNLOAD RESULT"><a>
-</div>
+    <div class="form-group row">
+      <input type="button" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" onclick="hash.value =CryptoJS.AES.encrypt(input.value,secret.value);
+      " class="btn btn-primary" value="Chiffrement AES">
+      <input type="button" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
+      " id="decrypt" class="btn btn-primary" onclick="myFunction()" value="DeChiffrement AES">
+    </div>
+    <div class="form-group row">
+      
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Output</label>
+      <div class="col-sm-10">
+        <input type="text" name="hash" class="form-control" id="Output" placeholder="Output">
+      </div>
+    </div>
+    <div class="form-group row">
+      <input type="button" onclick="strDownload(Output.value, 'result.txt');" style="margin:auto; margin-top: 2%; margin-bottom: 2%;" 
+      class="btn btn-primary" value="DOWNLOAD RESULT"><a>
+      </div>
 
 
 
-<script>
-    function hex_to_ascii(str1)
-    {
-        var hex  = str1.toString();
-        var str = '';
-        for (var n = 0; n < hex.length; n += 2) {
+      <script>
+        function hex_to_ascii(str1)
+        {
+          var hex  = str1.toString();
+          var str = '';
+          for (var n = 0; n < hex.length; n += 2) {
             str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+          }
+          return str;
         }
-        return str;
-    }
-    function strDownload(a, b) {
-  a = '' + a;
-  b = b || 'strDownload.txt';
-  var c = document.createElement('A'),
-      d = document.body;
-  d.appendChild(c);
-  c.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(a);
-  c.download = b;
-  c.click();
-  d.removeChild(c);
-}
+        function strDownload(a, b) {
+          a = '' + a;
+          b = b || 'strDownload.txt';
+          var c = document.createElement('A'),
+          d = document.body;
+          d.appendChild(c);
+          c.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(a);
+          c.download = b;
+          c.click();
+          d.removeChild(c);
+        }
 
-   function myFunction() {
-            
-            let decrypted = CryptoJS.AES.decrypt(input.value,secret.value);
-            decrypted = hex_to_ascii(decrypted);
-            Output.value = decrypted;
+        function myFunction() {
+          
+          let decrypted = CryptoJS.AES.decrypt(input.value,secret.value);
+          decrypted = hex_to_ascii(decrypted);
+          Output.value = decrypted;
         };
 
 
 
-function init(){
-  document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
-}
+        function init(){
+          document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+        }
 
-function handleFileSelect(event){
-  const reader = new FileReader()
-  reader.onload = handleFileLoad;
-  reader.readAsText(event.target.files[0])
-}
+        function handleFileSelect(event){
+          const reader = new FileReader()
+          reader.onload = handleFileLoad;
+          reader.readAsText(event.target.files[0])
+        }
 
-function handleFileLoad(event){
-  console.log(event);
-  document.getElementById('input').textContent = event.target.result;
-}
-
-
-</script>
+        function handleFileLoad(event){
+          console.log(event);
+          document.getElementById('input').textContent = event.target.result;
+        }
 
 
-
-
-  </div>
+      </script>
 
 
 
- 
 
-</form>
+    </div>
+
+
+
+    
+
+  </form>
 
 </body>
 </html>
