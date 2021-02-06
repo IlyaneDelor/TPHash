@@ -9,7 +9,7 @@ One to two paragraph statement about your product and what it does.
 
 ![](header.png)
 
-## Installation
+## Installation Information
 All the file are in the Projects, but I use this command to have them.
 
 ```sh
