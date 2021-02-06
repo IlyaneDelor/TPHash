@@ -3,7 +3,6 @@ window.addEventListener('load', BDD);
 var db = openDatabase("myDB", "1.0", "TiPS Database Example", 2 * 1024 * 1024);
 
 
-
 function BDD(){    
 
     document.getElementById('btn-save').addEventListener('click', save);
@@ -11,9 +10,9 @@ function BDD(){
     document.getElementById('btn-login').addEventListener('click', login);
     
     db.transaction(function(tx) {
-        //tx.executeSql("DROP TABLE users" );
+
         tx.executeSql("CREATE TABLE IF NOT EXISTS users ( id INTEGER PRIMARY KEY,name TEXT,pass TEXT, email TEXT)" );
-//        tx.executeSql('INSERT INTO users ( name,pass,email) VALUES ("a", "b", "c")');
+
 });
     
     montrer();
@@ -29,8 +28,13 @@ function save(){
     db.transaction(function(tx) {
         if(id){
             tx.executeSql('UPDATE users SET name=?, pass=?, email=? WHERE id=?', [name,pass,mail,id],null);
+            document.getElementById('resultReg').textContent = "Your account has been modified ";
         }else{
+            mail =CryptoJS.AES.encrypt(mail,"TpHahage");
+            pass = MD5.calcMD5(pass);
             tx.executeSql('INSERT INTO users ( name,pass,email) VALUES (?, ?, ?)', [name,pass,mail]);
+            document.getElementById('resultReg').textContent = "WELCOME";
+
         }
     });
 
@@ -94,9 +98,9 @@ function login(){
 
         }
     if(resultat == 1){
-        console.log("test");
+        document.getElementById('resultlog').textContent = "YOU ARE LOGIN !" +  myFunction(mail);
     }else{
-        console.log("tesst")
+        document.getElementById('resultlog').textContent = "ERROR LOGIN : " ;
     }
 
 
@@ -141,3 +145,23 @@ function delet(){
     Champs();
     inputSHOW(false);
 }
+
+        function hex_to_ascii(str1)
+        {
+          var hex  = str1.toString();
+          var str = '';
+          for (var n = 0; n < hex.length; n += 2) {
+            str += String.fromCharCode(parseInt(hex.substr(n, 2), 16));
+          }
+          return str;
+        }
+
+
+        function myFunction(test) {
+          
+          let decrypted = CryptoJS.AES.decrypt(mail,"TpHahage");
+          decrypted = hex_to_ascii(decrypted);
+          test = decrypted;
+        };
+
+
